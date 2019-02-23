@@ -1,0 +1,284 @@
+Step No-1:Purpose of the database
+
+  -The main purpose of this database is to maintains the records of the appointment taken by     patients.
+  -And also maintains the health records of the patients.
+
+Step No-2: Find and organize the information required
+
+  -User information = name,id,address
+  -Patient information = name,id,address,disease type,inward_patient,outward_patient
+  -Appointment information = No,appointment time,date,doctor name,patient_name
+  -Doctor information = name,id,type,specialization
+  -Report information = id,date of examination,problem
+  -Administration = Admin name,id,
+  -Bill information = bill_id,doctor_charge,room_charge,medicin _charge
+  -pharmacy = medicin_name,price
+  -Record = id,Appoinment_no,patient_info,date_of_examination
+  -Insurance = id,company_name,patient_name
+
+Step No-3:  Divide the information into tables and major entities
+   
+   -hospitals
+   -users 
+   -patients 
+   -appoinments 
+   -doctors
+   -dr_types
+   -admins
+   -symptoms
+   -medicines 
+   -bills 
+   -pharmacy 
+   -bill_medicines 
+   -insurances 
+   -doctor_appoinments
+
+Step No-4: Turn information items into columns
+	
+	hospitals
+    -int id
+    -varchar name (30)
+    -varchar location
+    -varchar start_time
+    -varchar endtime
+  
+  timetable 
+    -int id
+    -varchar working_days
+    -varchar doctor's_visting_days
+    -varchar doctor's_visiting_intime
+    -varchar doctor's_visiting_outtime
+  
+  users                       
+	  -int id
+	  -varchar name
+	  -varchar address
+	  -varchar age
+	  -varchar sex
+	  -varchar dob
+	  -varchar email
+	  -varchar passward
+	  -varchar user_type
+
+	appoinments
+	  -int id
+	  -date date
+	  -varchar time
+	  -int patients_id
+	  -int doctor_id
+
+	patients
+	  -int id
+	  -int user_id
+	 
+	doctors
+	  -int id
+	  -varchar time
+	  -date date
+	  -varchar status
+	  -int users_id
+
+	doctor_timetable
+	    -int doctor_id
+	    -int 
+
+	Specialization
+	  -int id
+	  -varchar specialization
+
+	doctor_specialization
+	  -int doctor_id
+	  -int specialization_id
+
+	dr_fees
+	  -int id
+	  -float doctor_fee
+	  -int doctor_id 
+
+	symptoms
+	  -int id
+	  -varchar symptoms_name
+	  -int medicines_id
+
+	patient_symptoms
+	  -int patient_id
+	  -int symptom's_id
+
+	medicines
+	  -int id
+	  -varchar medicines_name
+
+	disease
+	  -int id
+	  -varchar disease_name
+
+  medicin_disease
+    -medicin_id
+    -disease_id
+
+	prescription
+	  -int id 
+	  -varchar_time
+	  -date date
+	  -int patient_id
+	  -int medicin_id
+ 
+ patient_presciption
+   -int patient_id
+   -int presciption_id
+
+  admin
+    -int id
+    -user_id
+    
+  bills
+    -int id
+    -int patient_id
+    -float total_charges
+
+  doctor_appointments
+    -int doctor_id
+    -int appointment_id
+
+  pharmacy_bill
+    -id 
+    -float total_charge
+    -int medicin_id
+  
+  user_ratings
+    int id
+    varchar rating
+
+  dr_rating
+    int user_rating
+    int doctor_id
+
+Step No-5: Specify primary keys
+  
+  hospitals
+    -hospital_id
+  
+  users                    
+	  -int user_id 
+
+  appoinments
+	  -int appointment_id
+ 
+  patients
+	  -int patient_id
+  
+  doctor
+	  -int doctor_id
+  
+  dr_types 
+    -int dr_types_id
+  
+  symptoms
+    -int symptoms_id
+  
+  medicins
+    -int medicines_id
+
+	bill_medicines
+	  -int bill_medicines_id
+
+  insurances
+    -int insurances_id
+
+  doctor_appointments
+    -int dr_appo_id
+  
+  admins
+    -int admins_id
+  
+  bills
+    -int bill_id
+  
+  insurance Table
+    -int insurances_id
+  
+
+
+Step No-6: Set up the table relationships 
+   
+  hospitals
+    -int id
+    -varchar name (30)
+    -varchar location
+    -varchar time
+  
+  users                       
+	  -int id
+	  -varchar name
+	  -varchar address
+	  -varchar age
+	  -varchar sex
+	  -varchar dob
+	  -varchar email
+	  -varchar passward
+	  -varchar user_type
+
+	appoinments
+	  -int id
+	  -date date
+	  -varchar time
+	  -int patients_id
+	  -int doctors_id
+
+	patients
+	  -int id
+	  -int users_id
+	  -int symptoms_id
+	
+	doctors
+	  -int id
+	  -int users_id
+	  -int dr_types_id
+	  -varchar time
+	  -date date
+	  -varchar status
+
+	dr_types
+	  -int id
+	  -varchar specialization
+
+	symptoms
+	  -int id
+	  -varchar symptoms_name
+	  -int medicins_id
+
+	medicins
+	  -int id
+	  -varchar medicines_name
+
+  admins
+    -int id
+    -varchar user_id
+    
+  bills
+    -int id
+    -medicins_id
+    -total_price
+    -patient_id
+    -doctor_id
+  
+  bill_medicines
+    -int medicines_id
+    -int bill_id
+  
+  insurances 
+    -int id
+    -varchar company_name
+    -varchar address
+    -int patient_id
+
+  doctor_appointments
+    -doctor_id
+    -appointment_id
+
+Step No-7: Refine the design
+Step No-8: Apply the normalization rules:
+
+
+
+
